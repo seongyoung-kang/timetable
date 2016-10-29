@@ -142,11 +142,11 @@ class Mail extends PHPMailer
 	 * @param string $account_passwd Secure method ('ssl','tls')
 	 * @return void
 	 */
-	function useNaverAccount($account_name, $account_passwd)
+	function useGmailAccount($account_name, $account_passwd)
 	{
 		$this->SMTPAuth = TRUE;
 		$this->SMTPSecure = "tls";
-		$this->Host = 'smtp.naver.com';
+		$this->Host = 'smtp.gmail.com';
 		$this->Port = '587';
 		if($this->isVaildMailAddress($account_name))
 		{
@@ -154,7 +154,7 @@ class Mail extends PHPMailer
 		}
 		else
 		{
-			$this->Username = $account_name . '@naver.com';
+			$this->Username = $account_name . '@gmail.com';
 		}
 		$this->Password = $account_passwd;
 		$this->IsSMTP();

@@ -1,3 +1,0 @@
-<?php
-if(!defined('__XE__')) { exit(); }
-return 'a:4:{s:9:\"flybanner\";O:8:\"stdClass\":3:{s:10:\"module_srl\";i:167;s:4:\"name\";s:9:\"flybanner\";s:5:\"value\";s:1:\"N\";}s:10:\"mainbanner\";O:8:\"stdClass\":3:{s:10:\"module_srl\";i:167;s:4:\"name\";s:10:\"mainbanner\";s:5:\"value\";s:49:\"./files/attach/images/167/IMG_20161028_125903.jpg\";}s:17:\"mainbanner_target\";O:8:\"stdClass\":3:{s:10:\"module_srl\";i:167;s:4:\"name\";s:17:\"mainbanner_target\";s:5:\"value\";s:6:\"_blank\";}s:17:\"notice_write_form\";O:8:\"stdClass\":3:{s:10:\"module_srl\";i:167;s:4:\"name\";s:17:\"notice_write_form\";s:5:\"value\";s:105:\"비매너 거래 제보가 계속될 시에 강제 탈퇴 및 영구 탈퇴 조치가 이루어집니다.\";}}';
