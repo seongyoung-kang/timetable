@@ -1,0 +1,37 @@
+function signup(form){ return legacy_filter('signup', form, 'member', 'procMemberInsert', completeInsert, ['error','message','redirect_url'], '등록하시겠습니까?', {'password1':'password'}) };
+(function($){
+	var v=xe.getApp('validator')[0];if(!v)return false;
+	v.cast("ADD_FILTER", ["signup", {'user_id': {required:true,minlength:3,maxlength:20,rule:'userid'},'password1': {required:true,minlength:6,maxlength:20},'password2': {required:true,minlength:6,maxlength:20,equalto:'password1'},'user_name': {required:true,minlength:2,maxlength:40},'nick_name': {required:true,minlength:2,maxlength:40},'email_address': {required:true,minlength:1,maxlength:200,rule:'email'},		'cellphone' : {required:true},		'open_cellphone' : {}}]);
+	
+	v.cast('ADD_MESSAGE',['user_id','아이디']);
+	v.cast('ADD_MESSAGE',['password1','새 비밀번호']);
+	v.cast('ADD_MESSAGE',['password2','새 비밀번호 확인']);
+	v.cast('ADD_MESSAGE',['user_name','이름']);
+	v.cast('ADD_MESSAGE',['nick_name','닉네임']);
+	v.cast('ADD_MESSAGE',['email_address','이메일 주소']);
+	v.cast('ADD_MESSAGE',['cellphone','연락처(휴대폰)']);
+	v.cast('ADD_MESSAGE',['open_cellphone','open_cellphone']);
+	v.cast('ADD_MESSAGE',['accept_agreement','약관동의']);
+	v.cast('ADD_MESSAGE',['member_srl','member_srl']);
+	v.cast('ADD_MESSAGE',['password','비밀번호']);
+	v.cast('ADD_MESSAGE',['homepage','홈페이지']);
+	v.cast('ADD_MESSAGE',['blog','블로그']);
+	v.cast('ADD_MESSAGE',['birthday','생일']);
+	v.cast('ADD_MESSAGE',['allow_mailing','메일링 가입']);
+	v.cast('ADD_MESSAGE',['isnull','%s 값은 필수입니다.']);
+	v.cast('ADD_MESSAGE',['outofrange','%s의 글자 수를 맞추어 주세요.']);
+	v.cast('ADD_MESSAGE',['equalto','%s이(가) 잘못되었습니다.']);
+	v.cast('ADD_MESSAGE',['invalid','%s의 값이 올바르지 않습니다.']);
+	v.cast('ADD_MESSAGE',['invalid_email','%s의 값은 올바른 메일 주소가 아닙니다.']);
+	v.cast('ADD_MESSAGE',['invalid_userid','%s의 값은 영문, 숫자, _만 가능하며 첫 글자는 영문이어야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_user_id','%s의 값은 영문, 숫자, _만 가능하며 첫 글자는 영문이어야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_homepage','%s의 형식이 잘못되었습니다.(예: http://www.xpressengine.com)']);
+	v.cast('ADD_MESSAGE',['invalid_url','%s의 형식이 잘못되었습니다.(예: http://www.xpressengine.com)']);
+	v.cast('ADD_MESSAGE',['invalid_korean','%s의 형식이 잘못되었습니다. 한글로만 입력해야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_korean_number','%s의 형식이 잘못되었습니다. 한글과 숫자로만 입력해야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_alpha','%s의 형식이 잘못되었습니다. 영문으로만 입력해야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_alpha_number','%s의 형식이 잘못되었습니다. 영문과 숫자로만 입력해야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_mid','%s의 형식이 잘못되었습니다. 첫 글자는 영문으로 시작해야 하며 \'영문+숫자+_\'로만 입력해야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_number','%s의 형식이 잘못되었습니다. 숫자로만 입력해야 합니다.']);
+	v.cast('ADD_MESSAGE',['invalid_float','%s의 형식이 잘못되었습니다. 실수로만 입력해야 합니다.']);
+})(jQuery);
