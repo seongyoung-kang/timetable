@@ -452,6 +452,7 @@
 				<input type="hidden" name="act" value="procMemberLogin" />
 				<input type="hidden" name="success_return_url" value="{getCurrentPageUrl()}" />
 				<input type="hidden" name="xe_validator_id" value="layouts/xedition/layout/1" />
+
 				<fieldset>
 					<legend class="blind">{$lang->cmd_login}</legend>
 					<div class="control-group">
@@ -490,6 +491,9 @@
 			<a href="{getUrl('act', 'dispMemberFindAccount')}">{$lang->cmd_find_member_account}</a>
 			<span class="f_bar">|</span>
 			<a href="{getUrl('act', 'dispMemberSignUpForm')}">{$lang->cmd_signup}</a>
+			<span class="f_bar">|</span>
+			<a href="http://kookmintime.epizy.com/xe/index.php?act=dispMemberLoginForm">소셜로그인</a>
+			<span class="f_bar"><br /><br />네이버, 구글을 통해 가입하거나 로그인 하시려면 <br />소셜로그인을 클릭 후 아래쪽으로 스크롤 해주세요.</span>
 		</div>
 		<a href="#" class="btn_ly_popup"><span class="blind">닫기</span></a>
 	</div>
@@ -524,7 +528,7 @@
 	});
 	</script>
 </section>
-<!-- /Login widget -->    
+<!-- /Login widget -->
 <script cond="$_enable_slide">
 jQuery(document).ready(function () {
 	var swiper = new Swiper('.swiper-container', {
