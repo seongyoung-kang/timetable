@@ -1,0 +1,4 @@
+REVIEBOARD_URL = 'http://reviews'
+REPOSITORY = 'autotimetable'
+STAMP_WHEN_POSTING = True
+
