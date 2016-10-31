@@ -1,7 +1,3 @@
 REVIEWBOARD_URL = 'http://reviews.cs.kookmin.ac.kr/'
-<<<<<<< HEAD
-REPOSITORY = 'autoMakeTimeTable'
-=======
 REPOSITORY = 'AUTOMAKETIMETABLE'
->>>>>>> 139cf31eca213c741cfb0e312c1b9c82e56fe2f9
 STAMP_WHEN_POSTING = True
