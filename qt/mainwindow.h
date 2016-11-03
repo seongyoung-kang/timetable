@@ -7,6 +7,7 @@
 #include <QLabel>
 #include <QVector>
 #include <QString>
+#include <Qline>
 
 namespace Ui {
 class MainWindow;

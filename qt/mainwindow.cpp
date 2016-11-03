@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     QVector<QVBoxLayout*> vertical_vec;
     for(int i=0;i<7;i++)
     {
