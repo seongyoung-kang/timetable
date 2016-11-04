@@ -1,6 +1,19 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
+    <title>parsing complete</title>
+
+  </head>
+  <body>
+
+  </body>
+
 <?php
 //including snoopy
 include_once './Snoopy/Snoopy.class.php';
+
 
 
 //파싱 대상 설정
@@ -9,22 +22,41 @@ $login_url = "https://ktis.kookmin.ac.kr/kmu/ucb.Ucb0162rAGet01.do";
 //객체 만들기, 기본설정(설정값은 아래에...)
 $snoopy = new snoopy;
 
+$vars['gs_mode'] = $_POST["gs_mode"];
+$vars['user_id'] = $_POST["user_id"];
+$vars['gs_arg_group_num'] = $_POST["gs_arg_group_num"];
+$vars['arg_txt_year'] = $_POST["arg_txt_year"];
+$vars['arg_slct_smt'] = $_POST["arg_slct_smt"];
+$vars['search_div'] = $_POST["search_div"];
+$vars['arg_slct_coll_cd'] = $_POST["arg_slct_coll_cd"];
+$vars['arg_slct_dept_cd'] = $_POST["arg_slct_dept_cd"];
+$vars['arg_slct_comdiv_cd'] = $_POST["arg_slct_comdiv_cd"];
+$vars['arg_slct_group_num'] = $_POST["arg_slct_group_num"];
+$vars['arg_slct_group_num1'] = $_POST["arg_slct_group_num1"];
+$vars['group_class_div'] = $_POST["group_class_div"];
+$vars['arg_txt_curi_num'] = $_POST["arg_txt_curi_num"];
+$vars['arg_txt_curi_nm'] = $_POST["arg_txt_curi_nm"];
+$vars['arg_slct_gdept_cd'] = $_POST["arg_slct_gdept_cd"];
+$vars['slct_total_page'] = "150";
+
+/*  ---수동조작용
 $vars['gs_mode'] = "L";
 $vars['user_id'] = "null";
-$vars['gs_arg_group_num'] = "07";
+$vars['gs_arg_group_num'] = "08";
 $vars['arg_txt_year'] = "2016";
 $vars['arg_slct_smt'] = "20";
-$vars['search_div'] = "1";
+$vars['search_div'] = "5";
 $vars['arg_slct_coll_cd'] = "20001";
 $vars['arg_slct_dept_cd'] = "20003$01";
 $vars['arg_slct_comdiv_cd'] = "";
-$vars['arg_slct_group_num'] = "07";
+$vars['arg_slct_group_num'] = "08";
 $vars['arg_slct_group_num1'] = "11";
 $vars['group_class_div'] = "01";
 $vars['arg_txt_curi_num'] = "";
 $vars['arg_txt_curi_nm'] = "";
 $vars['arg_slct_gdept_cd'] = "xx";
 $vars['slct_total_page'] = "150";
+*/
 
 //사이트로 해당 변수들 보내기
 $snoopy->httpmethod = "POST";
@@ -32,13 +64,19 @@ $snoopy->submit($login_url,$vars);
 
 //출력 (정규표현식 사용)
 $txt = $snoopy->results;
-$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
-$txt=preg_replace("!(.*?)<!-- 상단 페이지 처리 끝-->!is","",$txt);
+$txt=preg_replace("!<a href(.*?)<\/a>!is","",$txt);
+$txt=preg_replace("!\=\"this(.*?)\">!is","",$txt);
+//$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
+$rex="!<tr onmouseover(.*?)<\/tr>!is";
 
-//$txt = preg_replace( $pattern, $txt );
-//$rex="#<td class=\"table_bg_white\"[^>]+\>(.*)</td></tr><tr><td>#is";
-//preg_match_all($rex,$txt);
-print_r(txt);
+preg_match_all($rex,$txt,$text);
+
+
+print_r($text[1]);
+$fp = fopen('here.txt', 'a');
+fwrite($fp, print_r($text[1], TRUE));
+fclose($fp);
+
 
 /*
 아래는 2학기 기준입니다.
@@ -520,3 +558,4 @@ deptCollection[384] = new Dept("20258", "학점교환생", "20259$01", "학점�
 */
 
 ?>
+</html>
