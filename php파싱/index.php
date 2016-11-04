@@ -8,7 +8,7 @@
   </head>
   <body>
 
-  </body>
+
 
 <?php
 //including snoopy
@@ -558,4 +558,5 @@ deptCollection[384] = new Dept("20258", "학점교환생", "20259$01", "학점�
 */
 
 ?>
+  </body>
 </html>
