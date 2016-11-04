@@ -77,7 +77,9 @@ $fp = fopen('here.txt', 'a');
 fwrite($fp, print_r($text[1], TRUE));
 fclose($fp);
 
-/*아래는 2학기 기준입니다.
+
+/*
+아래는 2학기 기준입니다.
 1학기로 가고싶으면 $vars['arg_slct_smt'] = "20"; 을 $vars['arg_slct_smt'] = "10";으로 수정하세요!
 */
 
