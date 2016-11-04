@@ -64,8 +64,6 @@ $snoopy->submit($login_url,$vars);
 
 //출력 (정규표현식 사용)
 $txt = $snoopy->results;
-
-
 $txt=preg_replace("!<a href(.*?)<\/a>!is","",$txt);
 $txt=preg_replace("!\=\"this(.*?)\">!is","",$txt);
 //$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
@@ -79,24 +77,7 @@ $fp = fopen('here.txt', 'a');
 fwrite($fp, print_r($text[1], TRUE));
 fclose($fp);
 
-/noopy->httpmethod = "POST";
-$snoopy->submit($login_url,$vars);
-
-//출력 (정규표현식 사용)
-$txt = $snoopy->results;
-$txt=preg_replace("!<a href(.*?)<\/a>!is","",$txt);
-$txt=preg_replace("!\=\"this(.*?)\">!is","",$txt);
-//$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
-$rex="!<tr onmouseover(.*?)<\/tr>!is";
-
-preg_match_all($rex,$txt,$text);
-
-
-print_r($text[1]);
-$fp = fopen('here.txt', 'a');
-fwrite($fp, print_r($text[1], TRUE));
-fclose($fp);
-아래는 2학기 기준입니다.
+/*아래는 2학기 기준입니다.
 1학기로 가고싶으면 $vars['arg_slct_smt'] = "20"; 을 $vars['arg_slct_smt'] = "10";으로 수정하세요!
 */
 
