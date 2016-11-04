@@ -51,12 +51,14 @@ $snoopy->submit($login_url,$vars);
 
 //출력 (정규표현식 사용)
 $txt = $snoopy->results;
-//$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
-$rex="!<tr onmouseover(.*?)<\/tr>!is";
 
-preg_match_all($rex,$txt,$o);
+$rex1="!<tr onmouseover(.*?)<\/tr>!is";
+preg_match_all($rex1,$txt,$text);
 
-print_r($o);
+//$rex2="!<a (.*?)<\/a>!is";
+//preg_match_all($rex2,$text,$o);
+
+print_r($text);
 //$txt=preg_replace("!<tr onmouseover(.*?)<\/tr>!is","",$txt);
 
 
