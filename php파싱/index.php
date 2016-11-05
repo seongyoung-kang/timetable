@@ -65,15 +65,15 @@ $snoopy->submit($login_url,$vars);
 //출력 (정규표현식 사용)
 $txt = $snoopy->results;
 $txt=preg_replace("!<a href(.*?)<\/a>!is","",$txt);
+$txt=preg_replace('@<[/]*td.*?>@is','',$txt);
 $txt=preg_replace("!\=\"this(.*?)\">!is","",$txt);
 //$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
 $rex="!<tr onmouseover(.*?)<\/tr>!is";
-
 preg_match_all($rex,$txt,$text);
-
-
 print_r($text[1]);
-$fp = fopen('here.txt', 'a');
+
+//누적으로 외부에 txt로 반환
+$fp = fopen('pypy.txt', 'a');
 fwrite($fp, print_r($text[1], TRUE));
 fclose($fp);
 
