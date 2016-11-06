@@ -13,8 +13,13 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    mybutton.cpp
 
-HEADERS  += mainwindow.h
+HEADERS  += mainwindow.h \
+    mybutton.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES += \
+    ../timetable logic/input.txt
