@@ -1,19 +1,6 @@
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=euc-kr">
-    <title>parsing complete</title>
-
-  </head>
-  <body>
-
-  </body>
-
 <?php
 //including snoopy
 include_once './Snoopy/Snoopy.class.php';
-
 
 
 //파싱 대상 설정
@@ -64,19 +51,23 @@ $snoopy->submit($login_url,$vars);
 
 //출력 (정규표현식 사용)
 $txt = $snoopy->results;
-$txt=preg_replace("!<a href(.*?)<\/a>!is","",$txt);
-$txt=preg_replace('@<[/]*td.*?>@is','',$txt);
-$txt=preg_replace("!\=\"this(.*?)\">!is","",$txt);
 //$txt=preg_replace("!<head(.*?)<\/head>!is","",$txt);
 $rex="!<tr onmouseover(.*?)<\/tr>!is";
-preg_match_all($rex,$txt,$text);
-print_r($text[1]);
 
-//누적으로 외부에 txt로 반환
-$fp = fopen('pypy.txt', 'a');
-fwrite($fp, print_r($text[1], TRUE));
-fclose($fp);
+preg_match_all($rex,$txt,$o);
 
+print_r($o);
+//$txt=preg_replace("!<tr onmouseover(.*?)<\/tr>!is","",$txt);
+
+
+//print_r($txt);
+
+
+//파일 다운로드 시키기
+
+
+
+//print_r($txt);
 
 /*
 아래는 2학기 기준입니다.
@@ -558,4 +549,3 @@ deptCollection[384] = new Dept("20258", "학점교환생", "20259$01", "학점�
 */
 
 ?>
-</html>

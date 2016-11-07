@@ -3,9 +3,10 @@
 <TITLE>파싱기~</TITLE>
 
 <style>
+/*
+각 클래스, 태그별 스타일 지정
+*/
 body {font-family: "Verdana", "돋움"; font-size: 11px; color: #333333; line-height:16px;}
-
-
 .table_bg {
 	background-color: gray;
 }
@@ -94,25 +95,24 @@ body {font-family: "Verdana", "돋움"; font-size: 11px; color: #333333; line-he
 	background-color: blue;
 }
 
-
 input {
   margin : auto;
   width : 80%;
-
 }
-
-
 
 </style>
 
 
 <SCRIPT LANGUAGE="JavaScript">
+
+// 대학 -> 학과 객체 함수 및 배열 선언
 function Dept(up_cd, up_nm, dept_cd, dept_nm) {
     this.varUpCd   = up_cd;
     this.varUpNm   = up_nm;
     this.varDeptCd = dept_cd;
     this.varDeptNm = dept_nm;
 }
+
 
 var deptCollection = new Array();
 deptCollection[0] = new Dept("29998", "학과미배정", "29999$01", "학과미배정");
@@ -502,7 +502,7 @@ deptCollection[383] = new Dept("20110", "공과대학", "20307$01", "기계설�
 deptCollection[384] = new Dept("20258", "학점교환생", "20259$01", "학점교환생");
 
 
-
+//옵션값 연과 관련 (대학선택시 해당 대학의 학부만 보여주기)
 function remakeDeptBox(frmObj, up_cd, isAll) {
     removeDeptBox(frmObj);
 
@@ -518,7 +518,7 @@ function remakeDeptBox(frmObj, up_cd, isAll) {
         }
     }
 }
-
+//페이지 들어왔을시 옵션 초기화
 function removeDeptBox(frmObj) {
     while (frmObj.options.length > 0) {
         frmObj.options[0] = null;
@@ -530,172 +530,48 @@ function removeDeptBox(frmObj) {
 <SCRIPT LANGUAGE="JavaScript">
 
 
-function evalQuery()
-{
-	var val = '1';
-
-
-	for( i=0; i < document.frmMain.search_div.length; i++)
-	{
-		if(document.frmMain.search_div[i].checked == true)	//체크 되었다면
-		{
-			val = document.frmMain.search_div[i].value;
-			break;
-		}
-	}
-	if(val == '1')
-	{	//개설강좌 검색
-		var val = 'x';
-		for( i=0; i < document.frmMain.arg_slct_dept_cd.length; i++)
-		{
-			if(document.frmMain.arg_slct_dept_cd.options[i].selected == true)	//선택 되었다면
-			{
-				val = document.frmMain.arg_slct_dept_cd.options[i].value;
-				break;
-			}
-		}
-		if(val == 'xx')
-		{
-			alert('대학 및 학과를 선택 후 검색하여 주십시요.');
-			return false;
-		}
-	}
-	else if (val == '2')
-	{	//영역 코드 검색
-		var val = 'x';
-		for( i=0; i < document.frmMain.arg_slct_group_num.length; i++)
-		{
-			if(document.frmMain.arg_slct_group_num.options[i].selected == true)	//선택 되었다면
-			{
-				val = document.frmMain.arg_slct_group_num.options[i].value;
-				break;
-			}
-		}
-		if(val == 'xx')
-		{
-			alert('영역을 선택 후 검색하여 주십시요.');
-			return false;
-		}
-	}
-	else if (val == '3')
-	{	//영역 코드 검색
-
-		if(document.frmMain.arg_txt_curi_num.value == '' && document.frmMain.arg_txt_curi_nm.value == '')
-		{
-			alert('교과목 코드 또는 교과목명을 입력 후 검색하여 주십시요.');
-			return false;
-		}
-	}
-	else if (val == '5')
-	{	//영역 코드 검색
-		var val = 'x';
-		for( i=0; i < document.frmMain.arg_slct_group_num1.length; i++)
-		{
-			if(document.frmMain.arg_slct_group_num1.options[i].selected == true)	//선택 되었다면
-			{
-				val = document.frmMain.arg_slct_group_num1.options[i].value;
-				break;
-			}
-		}
-		if(val == 'xx')
-		{
-			alert('영역을 선택 후 검색하여 주십시요.');
-			return false;
-		}
-	}
-
-	return true;
-}
-
-
 function changeKind( value) {
-//	if(document.getElementById("save") !=null)  document.getElementById("save").style.display = "inline";
+//	어떤 서치방식을 선택했느냐에 따라서 값을 보여줌
 
 	if(value == 1)
 	{
-		document.getElementById("search_div11").style.display = "inline";
-		document.getElementById("search_div12").style.display = "inline";
+		document.getElementById("search_div11").style.display = "";
+		document.getElementById("search_div12").style.display = "";
 		document.getElementById("search_div21").style.display = "none";
-		document.getElementById("search_div31").style.display = "none";
-		document.getElementById("search_div41").style.display = "none";
 		document.getElementById("search_div51").style.display = "none";
 	}
 	else if (value == 2)
 	{
 		document.getElementById("search_div11").style.display = "none";
 		document.getElementById("search_div12").style.display = "none";
-		document.getElementById("search_div21").style.display = "inline";
-		document.getElementById("search_div31").style.display = "none";
-		document.getElementById("search_div41").style.display = "none";
+		document.getElementById("search_div21").style.display = "";
 		document.getElementById("search_div51").style.display = "none";
 	}
-	else if(value == 3)
-	{
-		document.getElementById("search_div11").style.display = "none";
-		document.getElementById("search_div12").style.display = "none";
-		document.getElementById("search_div21").style.display = "none";
-		document.getElementById("search_div31").style.display = "inline";
-		document.getElementById("search_div41").style.display = "none";
-		document.getElementById("search_div51").style.display = "none";
-	}
-	else if (value == 4)
-	{
-		document.getElementById("search_div11").style.display = "none";
-		document.getElementById("search_div12").style.display = "none";
-		document.getElementById("search_div21").style.display = "none";
-		document.getElementById("search_div31").style.display = "none";
-		document.getElementById("search_div41").style.display = "inline";
-		document.getElementById("search_div51").style.display = "none";
-	}
+
 	else if (value == 5)
 	{
 		document.getElementById("search_div11").style.display = "none";
 		document.getElementById("search_div12").style.display = "none";
 		document.getElementById("search_div21").style.display = "none";
-		document.getElementById("search_div31").style.display = "none";
-		document.getElementById("search_div41").style.display = "none";
-  	document.getElementById("search_div51").style.display = "inline";
+  	document.getElementById("search_div51").style.display = "";
 	}
-	else if (value == 6)
-	{
-		document.getElementById("search_div11").style.display = "none";
-		document.getElementById("search_div12").style.display = "none";
-		document.getElementById("search_div21").style.display = "none";
-		document.getElementById("search_div31").style.display = "none";
-		document.getElementById("search_div41").style.display = "none";
-  	document.getElementById("search_div51").style.display = "none";
-	}
+
 }
-function actEvent2(objTextBox)
-{
-	var curi_num = document.getElementById('arg_txt_curi_num');
-	var curi_nm  = document.getElementById('arg_txt_curi_nm');
-	if(event.keyCode == 13 )
-	{
-			if(objTextBox == curi_nm)
-			{
-			   document.getElementById("arg_txt_curi_num").value    = "";
-			}
-			if(objTextBox == curi_num)
-			{
-			   document.getElementById("arg_txt_curi_nm").value    = "";
-			}
-        actEvent('query');
-	}
-}
+
 </SCRIPT>
 </HEAD>
 
-<BODY TEXT="#000000" STYLE="margin-right:0pt;margin-left:0pt;margin-top:0pt;margin-bottom:0pt" OnLoad ="javascript:setDefault()">
+<BODY>
+
 <TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
 <TR>
   <TD ALIGN="CENTER" VALIGN="TOP">
 
 
 <br>
-
-    <FORM NAME="frmMain" METHOD="post" ACTION="http://kmuni.epizy.com/index.php">
-    <TABLE CLASS="table_bg" CELLPADDING="2" CELLSPACING="1" BORDER="0" WIDTH="98%">
+<!--서버로 선택한 값을 전송함 값의 종류는 국민대학교의 것을 그대로 따름(유지보수의 이슈 때) -->
+    <FORM NAME="frmMain" METHOD="post" ACTION="http://kmuni.epizy.com/index.php" target="_blank">
+    <TABLE CLASS="table_bg" CELLPADDING="2" CELLSPACING="1" BORDER="0" WIDTH="100%">
 
     <INPUT TYPE="HIDDEN" NAME="gs_mode" VALUE="L" >
     <INPUT TYPE="HIDDEN" NAME="user_id" VALUE="null" >
@@ -705,12 +581,12 @@ function actEvent2(objTextBox)
 
     <TR>
       <TD CLASS="table_color_bright" WIDTH="15%">학년도</TD>
-      arg_txt_year<TD CLASS="table_bg_white" WIDTH="25%"><INPUT NAME="arg_txt_year" TYPE="TEXT" CLASS="input_textfield" VALUE="2016" MAXLENGTH="4" STYLE="width : 98%; text-align:right " required number ></TD>
+      <TD CLASS="table_bg_white" WIDTH="25%"><INPUT NAME="arg_txt_year" TYPE="TEXT" CLASS="input_textfield" VALUE="2016" MAXLENGTH="4" STYLE="width : 100%; text-align:right " required number ></TD>
       <TD CLASS="table_color_bright" WIDTH="15%">학기</TD>
 
 
       <TD CLASS="table_bg_white" WIDTH="45%">
-<SELECT NAME="arg_slct_smt" CLASS="input_combobox"  STYLE='width : 98%'>
+<SELECT NAME="arg_slct_smt" CLASS="input_combobox"  STYLE='width : 100%'>
 <OPTION VALUE="10" >1학기</OPTION>
 <OPTION VALUE="11" >여름학기</OPTION>
 <OPTION VALUE="20"  SELECTED>2학기</OPTION>
@@ -726,15 +602,13 @@ function actEvent2(objTextBox)
       <TD CLASS="table_bg_white_left"     WIDTH="85%" COLSPAN="3"><input type=radio name=search_div value="1" checked onclick="javascript:changeKind(1)">개설강좌
                                              <input type=radio name=search_div value="5"  onclick="javascript:changeKind(5)">핵심교양
                                              <input type=radio name=search_div value="2"  onclick="javascript:changeKind(2)">자유교양
-											 <input type=radio name=search_div value="3"  onclick="javascript:changeKind(3)">교과목명
-											 <input type=radio name=search_div value="4"  onclick="javascript:changeKind(4)">대학원강좌
-											 <input type=radio name=search_div value="6"  onclick="javascript:changeKind(6)">원어강좌
 											 </TD>
     </tr>
+	<!--search_div11 search_div12는 개설강좌 -->
 	<tr id ='search_div11' STYLE="DISPLAY:">
       <TD CLASS="table_color_bright" WIDTH="15%">대학</TD>
       <TD CLASS="table_bg_white"     WIDTH="25%">
-<SELECT NAME="arg_slct_coll_cd" CLASS="input_combobox"  STYLE="width : 98%" onChange="javascript:remakeDeptBox(frmMain.arg_slct_dept_cd, this.options[this.options.selectedIndex].value,true);">
+<SELECT NAME="arg_slct_coll_cd" CLASS="input_combobox"  STYLE="width : 100%" onChange="javascript:remakeDeptBox(frmMain.arg_slct_dept_cd, this.options[this.options.selectedIndex].value,true);">
 <OPTION VALUE="xx">----------------</OPTION>
 <OPTION VALUE="20001"  SELECTED>문과대학</OPTION>
 <OPTION VALUE="20010" >사회과학대학</OPTION>
@@ -764,7 +638,7 @@ function actEvent2(objTextBox)
 </TD>
       <TD CLASS="table_color_bright" WIDTH="15%">학부(과)</TD>
       <TD CLASS="table_bg_white"     WIDTH="45%">
-<SELECT NAME="arg_slct_dept_cd" CLASS="input_combobox"  STYLE='width : 98%'>
+<SELECT NAME="arg_slct_dept_cd" CLASS="input_combobox"  STYLE='width : 100%'>
 <OPTION VALUE="xx">-------------------</OPTION>
 <OPTION VALUE="20003$01"  SELECTED>국어국문학과</OPTION>
 <OPTION VALUE="20004$01" >영어영문학과</OPTION>
@@ -782,7 +656,7 @@ function actEvent2(objTextBox)
 	<tr id ='search_div12' STYLE="DISPLAY:">
       <TD CLASS="table_color_bright" WIDTH="15%">이수구분</TD>
       <TD CLASS="table_bg_white"     WIDTH="25%">
-<SELECT NAME="arg_slct_comdiv_cd" CLASS="input_combobox"  STYLE="width : 98%">
+<SELECT NAME="arg_slct_comdiv_cd" CLASS="input_combobox"  STYLE="width : 100%">
 <OPTION VALUE="">-----</OPTION>
 <OPTION VALUE="10" >교양기초</OPTION>
 <OPTION VALUE="11" >계열교양</OPTION>
@@ -827,13 +701,14 @@ function actEvent2(objTextBox)
 <OPTION VALUE="03" >교양필수</OPTION>
 </SELECT>
 </TD>
-      <TD CLASS="table_bg_white"     WIDTH="60%" colspan="2">&nbsp;</TD>
+      <TD CLASS="table_bg_white"     WIDTH="100%" colspan="2">&nbsp;</TD>
 	</tr>
-	<tr id ='search_div21' STYLE="DISPLAY:none">
+	<!--search_div21는 자유교양강좌 -->
+	<tr id ='search_div21' STYLE="DISPLAY:none" >
 
 	  <TD CLASS="table_color_bright"  WIDTH="15%" >영역</TD>
       <TD CLASS="table_bg_white"      WIDTH="25%" >
-<SELECT NAME="arg_slct_group_num" CLASS="input_combobox"  STYLE="width : 98%" >
+<SELECT NAME="arg_slct_group_num" CLASS="input_combobox"  STYLE="width : 100%" >
 <OPTION VALUE="xx">-----</OPTION>
 <OPTION VALUE="01" >문학·언어</OPTION>
 <OPTION VALUE="02" >역사·철학</OPTION>
@@ -850,11 +725,13 @@ function actEvent2(objTextBox)
                                              <input type=radio name=group_class_div value="02" >야</TD>
 
 	</TR>
-	<tr id ='search_div51' STYLE="DISPLAY:none">
+
+	<!--search_div51는 핵심교양강좌 -->
+	<tr id ='search_div51' STYLE="DISPLAY:none" >
 
 	  <TD CLASS="table_color_bright"  WIDTH="15%" >영역</TD>
       <TD CLASS="table_bg_white"      WIDTH="25%" >
-<SELECT NAME="arg_slct_group_num1" CLASS="input_combobox"  STYLE="width : 98%" >
+<SELECT NAME="arg_slct_group_num1" CLASS="input_combobox"  STYLE="width : 100%" >
 <OPTION VALUE="xx">-----</OPTION>
 <OPTION VALUE="11"  SELECTED>인문I</OPTION>
 <OPTION VALUE="12" >인문II</OPTION>
@@ -868,118 +745,13 @@ function actEvent2(objTextBox)
                                              <input type=radio name=group_class_div value="02" >야</TD>
 
 	</TR>
-    <TR id ='search_div31' STYLE="DISPLAY:none">
-      <TD CLASS="table_color_bright" WIDTH="15%" >과목코드</TD>
-      <TD CLASS="table_bg_white"     WIDTH="25%" ><INPUT NAME="arg_txt_curi_num" TYPE="TEXT" id="arg_txt_curi_num" CLASS="input_textfield" VALUE="" MAXLENGTH="6" STYLE="width : 98%;" ONKEYDOWN="javaScript:actEvent2(this);"></TD>
-      <TD CLASS="table_color_bright" WIDTH="15%" >과목명</TD>
-      <TD CLASS="table_bg_white"     WIDTH="45%" ><INPUT NAME="arg_txt_curi_nm" TYPE="TEXT"  id="arg_txt_curi_nm" CLASS="input_textfield" VALUE="" MAXLENGTH="20" STYLE="width : 98%;" ONKEYDOWN="javaScript:actEvent2(this);"></TD>
-      <!--TD CLASS="table_bg_white"     WIDTH="45%" ><INPUT NAME="arg_txt_abeek_nm" TYPE="hidden" CLASS="input_textfield" VALUE="" MAXLENGTH="20" STYLE="width : 98%;"></TD-->
-	</TR>
-    <TR id ='search_div41' STYLE="DISPLAY:none">
-      <TD CLASS="table_color_bright" WIDTH="15%" >대학원명</TD>
-      <TD CLASS="table_bg_white"     WIDTH="25%" >일반대학원</TD>
-      <TD CLASS="table_color_bright" WIDTH="15%" >학과</TD>
-      <TD CLASS="table_bg_white"     WIDTH="45%" >
-<SELECT NAME="arg_slct_gdept_cd" CLASS="input_combobox"  STYLE='width : 60%'>
-<OPTION VALUE="xx">-------------------</OPTION>
-<OPTION VALUE="30003" >국어국문학과</OPTION>
-<OPTION VALUE="30004" >영어영문학과</OPTION>
-<OPTION VALUE="30005" >중어중문학과</OPTION>
-<OPTION VALUE="30006" >국사학과</OPTION>
-<OPTION VALUE="30018" >교육학과</OPTION>
-<OPTION VALUE="30007" >행정학과</OPTION>
-<OPTION VALUE="30008" >정치외교학과</OPTION>
-<OPTION VALUE="30009" >사회학과</OPTION>
-<OPTION VALUE="30285" >언론정보학과</OPTION>
-<OPTION VALUE="30011" >국제지역학과</OPTION>
-<OPTION VALUE="30012" >법학과</OPTION>
-<OPTION VALUE="30013" >경제학과</OPTION>
-<OPTION VALUE="30015" >국제통상학과</OPTION>
-<OPTION VALUE="30014" >경영학과</OPTION>
-<OPTION VALUE="31103" >회계학과</OPTION>
-<OPTION VALUE="36217" >데이터사이언스학과</OPTION>
-<OPTION VALUE="36219" >금융정보보안학과</OPTION>
-<OPTION VALUE="36221" >보안-스마트 전기자동차학과</OPTION>
-<OPTION VALUE="30019" >수학과</OPTION>
-<OPTION VALUE="30020" >물리학과</OPTION>
-<OPTION VALUE="30021" >화학과</OPTION>
-<OPTION VALUE="30024" >식품영양학과</OPTION>
-<OPTION VALUE="36213" >바이오발효융합학과</OPTION>
-<OPTION VALUE="30025" >산림자원학과</OPTION>
-<OPTION VALUE="36204" >임산생명공학과</OPTION>
-<OPTION VALUE="30325" >산림과학과</OPTION>
-<OPTION VALUE="30027" >신소재공학과</OPTION>
-<OPTION VALUE="30029" >기계공학과</OPTION>
-<OPTION VALUE="30030" >기계설계학과</OPTION>
-<OPTION VALUE="30035" >건설시스템공학과</OPTION>
-<OPTION VALUE="30032" >전자공학과</OPTION>
-<OPTION VALUE="31212" >컴퓨터공학과</OPTION>
-<OPTION VALUE="30033" >건축학과</OPTION>
-<OPTION VALUE="30040" >도예학과</OPTION>
-<OPTION VALUE="30041" >금속공예학과</OPTION>
-<OPTION VALUE="30514" >커뮤니케이션디자인학과</OPTION>
-<OPTION VALUE="31250" >공간디자인학과</OPTION>
-<OPTION VALUE="30046" >음악학과</OPTION>
-<OPTION VALUE="30047" >미술학과</OPTION>
-<OPTION VALUE="31102" >공연영상학과</OPTION>
-<OPTION VALUE="30042" >체육학과</OPTION>
-<OPTION VALUE="30048" >문화교차학협동과정</OPTION>
-<OPTION VALUE="30049" >나노과학기술협동과정</OPTION>
-<OPTION VALUE="30429" >응용정보기술학과</OPTION>
-<OPTION VALUE="31252" >문화재보존학과</OPTION>
-<OPTION VALUE="31253" >의생명융합학과</OPTION>
-<OPTION VALUE="36227" >스포츠공학융합학과</OPTION>
-<OPTION VALUE="36257" >융합디자인테크놀러지학과</OPTION>
-<OPTION VALUE="30500" >학과간협동과정총괄</OPTION>
-<OPTION VALUE="36234" >영상·콘텐츠디자인학과</OPTION>
-<OPTION VALUE="36255" >패션학과</OPTION>
-<OPTION VALUE="30402" >한문학과(1988폐지)</OPTION>
-<OPTION VALUE="30403" >생활미술학과(1988폐지)</OPTION>
-<OPTION VALUE="30044" >금속공학과(1995폐지)</OPTION>
-<OPTION VALUE="30045" >토목공학과(1995폐지)</OPTION>
-<OPTION VALUE="30043" >무역학과(1996폐지)</OPTION>
-<OPTION VALUE="30404" >회계학과(1997폐지)</OPTION>
-<OPTION VALUE="30023" >가정학과(1999폐지)</OPTION>
-<OPTION VALUE="30036" >공업디자인학과(2000폐지)</OPTION>
-<OPTION VALUE="30037" >시각디자인학과(2000폐지)</OPTION>
-<OPTION VALUE="30038" >공예미술학과(2000폐지)</OPTION>
-<OPTION VALUE="30039" >의상디자인학과(2000폐지)</OPTION>
-<OPTION VALUE="30031" >토목환경공학과(2001폐지)</OPTION>
-<OPTION VALUE="30017" >정보관리학과(2002폐지)</OPTION>
-<OPTION VALUE="30028" >금속재료공학과(2002폐지)</OPTION>
-<OPTION VALUE="30034" >자동차공학과(2002폐지)</OPTION>
-<OPTION VALUE="30010" >언론학과(2004폐지)</OPTION>
-<OPTION VALUE="30050" >환경시스템협동과정(2004폐지)</OPTION>
-<OPTION VALUE="30052" >BK핵심사업팀(2005폐지)</OPTION>
-<OPTION VALUE="30053" >BK다상재료팀(2005폐지)</OPTION>
-<OPTION VALUE="30054" >BK전자공학팀(2005폐지)</OPTION>
-<OPTION VALUE="30055" >BK보험팀(2005폐지)</OPTION>
-<OPTION VALUE="30056" >BK인사팀(2005폐지)</OPTION>
-<OPTION VALUE="30057" >BK마케팅팀(2005폐지)</OPTION>
-<OPTION VALUE="30058" >BK지방정부평가팀(2005폐지)</OPTION>
-<OPTION VALUE="30059" >BK노화팀(2005폐지)</OPTION>
-<OPTION VALUE="30060" >BK자성물리팀(2005폐지)</OPTION>
-<OPTION VALUE="30061" >BK북한법제팀(2005폐지)</OPTION>
-<OPTION VALUE="30062" >BK금석문자료팀(2005폐지)</OPTION>
-<OPTION VALUE="30016" >회계정보학과(2007폐지)</OPTION>
-<OPTION VALUE="30022" >전산과학과(2007폐지)</OPTION>
-<OPTION VALUE="30051" >생명·정보기술협동과정(2009폐지)</OPTION>
-<OPTION VALUE="30026" >임산공학과(2010폐지)</OPTION>
-<OPTION VALUE="31101" >e-비즈니스학과(2013폐지)</OPTION>
-<OPTION VALUE="31232" >발효융합학과(2013폐지)</OPTION>
-<OPTION VALUE="36211" >분석경영학과(2014폐지)</OPTION>
-<OPTION VALUE="36215" >영상디자인학과(2015폐지)</OPTION>
-</SELECT>
 
-      <br>학·석사연계 교과목만 조회 <input type="checkbox" name="honor_yn" value="Y" >
-      </TD>
-	</TR>
 
 	</table>
 <br>
 
 
-<input type="submit"  value="데이터전송">
+<input type="submit"  value="데이터전송" >
 </FORM>
 </BODY>
 </HTML>
