@@ -2,11 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
-#include <QLabel>
 #include <QVector>
 #include <QString>
-#include <QFrame>
-#include <QLayout>
 #include <QPushButton>
 
 namespace Ui {

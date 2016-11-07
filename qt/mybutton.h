@@ -12,9 +12,10 @@ public:
     void setType(int type);
 
 private:
-    int buttonType=0;
-    int widthSize=91;
-    int heightSize=48;
+    int widthSize=90;
+    int heightSize;
+    int row;
+    int col;
 
 signals:
 

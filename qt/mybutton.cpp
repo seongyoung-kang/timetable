@@ -4,26 +4,20 @@ MyButton::MyButton(QWidget *parent) : QPushButton(parent)
 {
     this->show();
     this->setType(0);
-    this->setGeometry(0,0,this->widthSize, this->heightSize);
 }
 
 void MyButton::setPos(int row, int col)
 {
-    this->setGeometry(QRect(this->widthSize*row, this->heightSize*col, this->width(), this->height()));
+    this->row = row;
+    this->col = col;
+    this->move(row*this->widthSize, col*this->heightSize);
 }
 
 void MyButton::setType(int type)
 {
-    this->buttonType = type;
     if(0 == type)
-    {
-        this->widthSize=91;
-        this->heightSize=48;
-    }
+        this->heightSize=42;
     else
-    {
-        this->widthSize=91;
-        this->heightSize=70;
-    }
-    this->setGeometry(this->x(), this->y(), this->widthSize, this->heightSize);
+        this->heightSize=62;
+    this->resize(this->widthSize, this->heightSize);
 }
