@@ -14,7 +14,9 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    mybutton.cpp
+    mybutton.cpp \
+    regular_expresion.cpp \
+    timetable.cpp
 
 HEADERS  += mainwindow.h \
     mybutton.h
@@ -22,4 +24,4 @@ HEADERS  += mainwindow.h \
 FORMS    += mainwindow.ui
 
 DISTFILES += \
-    ../timetable logic/input.txt
+    input.txt
