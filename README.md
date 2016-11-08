@@ -40,7 +40,7 @@ snoopy를 써서(php 외부 소켓 클래스 입니다.) 파싱을 했습니다.
 원하는 만큼 데이터를 배열 형태로 저장할 수 있습니다.
 파싱 UI는 kmuni.epizy.com/parsing 에서 볼 수 있습니다.
 파싱 서버 주소는 kmuni.epizy.com/index.php 입니다.
-txt는 kmuni.epizy.com/pypy.txt 에 저장됩니다.
+txt는 자신이 입력한 곳에 저장됩니다.
 
 서버는 apache 2.4.178을 쓰고있고 os는 centos(3.2.40 kernel) 입니다.
 db는 mysql 5.1.73 이고 php는 5.6.23 버전 입니다.
