@@ -15,11 +15,11 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     mybutton.cpp \
-    regular_expresion.cpp \
     timetable.cpp
 
 HEADERS  += mainwindow.h \
-    mybutton.h
+    mybutton.h \
+    timetable.h
 
 FORMS    += mainwindow.ui
 

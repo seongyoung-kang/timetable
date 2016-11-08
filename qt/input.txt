@@ -1,6 +1,6 @@
 Array
 (
-    [0] => 
+    [0] =>
         &nbsp;1
         &nbsp;기초교양
         &nbsp;00054A
@@ -12,8 +12,8 @@ Array
         &nbsp;컴퓨터공학부 신입생반(1-52)
         &nbsp;
         &nbsp;
-      
-    [1] => 
+
+    [1] =>
         &nbsp;1
         &nbsp;기초교양
         &nbsp;00054A
@@ -25,8 +25,8 @@ Array
         &nbsp;컴퓨터공학부 신입생반(53-)
         &nbsp;
         &nbsp;
-      
-    [2] => 
+
+    [2] =>
         &nbsp;1
         &nbsp;학부(과)기초
         &nbsp;015576
@@ -38,8 +38,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [3] => 
+
+    [3] =>
         &nbsp;1
         &nbsp;학부(과)기초
         &nbsp;015576
@@ -51,8 +51,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [4] => 
+
+    [4] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;01568H
@@ -64,8 +64,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [5] => 
+
+    [5] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;01568H
@@ -77,8 +77,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [6] => 
+
+    [6] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;01568H
@@ -90,8 +90,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [7] => 
+
+    [7] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;01568H
@@ -103,8 +103,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [8] => 
+
+    [8] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;01568H
@@ -116,8 +116,8 @@ Array
         &nbsp;재수강 & 타과생 수강가능
         &nbsp;
         &nbsp;
-      
-    [9] => 
+
+    [9] =>
         &nbsp;1
         &nbsp;전공기초교양
         &nbsp;053304
@@ -129,8 +129,8 @@ Array
         &nbsp;컴퓨터공학부(1-50) 신입생반
         &nbsp;
         &nbsp;
-      
-    [10] => 
+
+    [10] =>
         &nbsp;1
         &nbsp;전공기초교양
         &nbsp;053304
@@ -142,8 +142,8 @@ Array
         &nbsp;컴퓨터공학부(51-) 신입생반
         &nbsp;
         &nbsp;
-      
-    [11] => 
+
+    [11] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;059204
@@ -155,8 +155,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [12] => 
+
+    [12] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;059204
@@ -168,8 +168,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [13] => 
+
+    [13] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;059204
@@ -181,8 +181,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [14] => 
+
+    [14] =>
         &nbsp;1
         &nbsp;전공선택
         &nbsp;059204
@@ -194,8 +194,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [15] => 
+
+    [15] =>
         &nbsp;1-4
         &nbsp;자유교양
         &nbsp;052287
@@ -207,8 +207,8 @@ Array
         &nbsp;컴퓨터공학부 신입생반
         &nbsp;
         &nbsp;
-      
-    [16] => 
+
+    [16] =>
         &nbsp;1-4
         &nbsp;자유교양
         &nbsp;052287
@@ -220,8 +220,8 @@ Array
         &nbsp;컴퓨터공학부 신입생반
         &nbsp;
         &nbsp;
-      
-    [17] => 
+
+    [17] =>
         &nbsp;1-4
         &nbsp;자유교양
         &nbsp;052287
@@ -233,8 +233,8 @@ Array
         &nbsp;컴퓨터공학부 신입생반
         &nbsp;
         &nbsp;
-      
-    [18] => 
+
+    [18] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;015602
@@ -246,8 +246,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [19] => 
+
+    [19] =>
         &nbsp;2
         &nbsp;학부(과)기초
         &nbsp;015624
@@ -259,8 +259,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [20] => 
+
+    [20] =>
         &nbsp;2
         &nbsp;학부(과)기초
         &nbsp;015624
@@ -272,8 +272,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [21] => 
+
+    [21] =>
         &nbsp;2
         &nbsp;학부(과)기초
         &nbsp;015634
@@ -285,8 +285,8 @@ Array
         &nbsp;화일처리01,이산수학01,컴퓨터구조01 수강바람
         &nbsp;
         &nbsp;
-      
-    [22] => 
+
+    [22] =>
         &nbsp;2
         &nbsp;학부(과)기초
         &nbsp;015634
@@ -298,8 +298,8 @@ Array
         &nbsp;화일처리02,이산수학02,컴퓨터구조02 수강바람
         &nbsp;
         &nbsp;
-      
-    [23] => 
+
+    [23] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;015704
@@ -311,8 +311,8 @@ Array
         &nbsp;화일처리01,이산수학01,컴퓨터구조01 수강바람
         &nbsp;
         &nbsp;
-      
-    [24] => 
+
+    [24] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;015704
@@ -324,8 +324,8 @@ Array
         &nbsp;화일처리02,이산수학02,컴퓨터구조02 수강바람
         &nbsp;
         &nbsp;
-      
-    [25] => 
+
+    [25] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;015752
@@ -337,8 +337,8 @@ Array
         &nbsp;화일처리01,이산수학01,컴퓨터구조01 수강바람
         &nbsp;
         &nbsp;
-      
-    [26] => 
+
+    [26] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;015752
@@ -350,8 +350,8 @@ Array
         &nbsp;화일처리02,이산수학02,컴퓨터구조02 수강바람
         &nbsp;
         &nbsp;
-      
-    [27] => 
+
+    [27] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;033574
@@ -363,8 +363,8 @@ Array
         &nbsp;
         &nbsp;
         &nbsp;
-      
-    [28] => 
+
+    [28] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;114380
@@ -376,8 +376,8 @@ Array
         &nbsp;영어로 진행, 오픈소스소프트웨어01분반은 응용통계학01분반 신청바람
         &nbsp;
         &nbsp;
-      
-    [29] => 
+
+    [29] =>
         &nbsp;2
         &nbsp;전공선택
         &nbsp;114380
@@ -389,5 +389,5 @@ Array
         &nbsp;영어로 진행,오픈소스소프트웨어02분반은 응용통계학02분반 신청 바람
         &nbsp;
         &nbsp;
-      
+
 )
