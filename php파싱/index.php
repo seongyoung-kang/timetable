@@ -73,7 +73,7 @@ preg_match_all($rex,$txt,$text);
 print_r($text[1]);
 
 //누적으로 외부에 txt로 반환
-$fp = fopen('pypy.txt', 'a');
+$fp = fopen($_POST["file"], 'a');
 fwrite($fp, print_r($text[1], TRUE));
 fclose($fp);
 

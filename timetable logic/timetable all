@@ -11,7 +11,7 @@ using std::tr1::smatch;
 using std::tr1::regex_match;
 using std::string;
 using namespace std;
- 
+
 /*
 define된 매크로는 수업시간을 계산하기 위한 매크로입니다.
 수업시간이 1130~1245인경우 11301245로 받습니다. 그러므로 endtime과 starttime은 11301245를 1245와 1130으로 분리해줍니다.
@@ -42,18 +42,18 @@ typedef struct subject		//과목의 정보를 담는 배열입니다.
 	int limit[5]; // 학년제한 네자리숫자 limit[1]이 1이면 1학년은 수강 가능하다는 뜻입니다.
 	int point; //학점
 }subject;
- 
+
 /*출력때 필요한 배열들입니다.*/
 char * date[7] = { "월","화", "수", "목", "금", "토", "일" };
 char * subjectname[7] = { "기초교양", "학부(과)기초", "자유교양", "핵심교양", "전공선택", "전공기초교양"};
 int subpoint[11] = {8,23,20,0,74,11};	///졸업이수에 필요한 학점입니다. 위에서 선언된 subjectname과 연관됩니다.
- 
- 
+
+
 								/* 함수선언 입니다*/
 int msearch(int k, int cnt);	/// 시간표를 찾아주는 핵심 함수 입니다. (서칭함수)
 int calculate(void);	/// 탐색한 시간표의 점수를 표시합니다.
- 
- 
+
+
 						/*서칭함수에 사용되는 변수입니다*/
 int mysubject[30]; // 사용자가 수강할 과목 , 코드번호가아닌 arr 번호로 입력받는다
 int number; ///mysubject의 갯수
@@ -66,7 +66,7 @@ int sbnumber[30];	// 탐색한 과목 set에 과목이 몇개 있는지 저장�
 int minanswer;		// 탐색한 30개 set 과목중에 가장 낮은 점수가 몇점짜리 set인지 기억합니다
 int info[1000000]; // 과목코드에 따른 그 과목이 몇번째 배열인지 표시.
 int find_s;	// 사용자가 몇과목을 탐색할지 지정해줍니다.
- 
+
 			/* 사용자 정보에 대한 변수입니다.*/
 int empty_s; // 원하는 공강날짜 표시 0을 기준으로 월요일
 int mainpoint;//서칭한 과목들이 총 몇학점인지 나타 냅니다
@@ -79,23 +79,23 @@ int usertime[7][20]; // 추천 시간표 혹은 현재의 시간표에 따라서
 					 //사용자 시간표 시간정보 usertime[0~4][]... 기준으로 월요일 & usertime[x][0] 여기 배열은 x요일에 몇과목인지 표시, user[0][1] = 10301145이런식으로 표시
 int proper[15];	///과목계열 선호도입니다 어떠한 계열을 얼만큼 선호하는지 순서대로 표시합니다
 int checkproper[15];///과목 선호도 체크배열입니다 / 탐색이 편중되는것을 막기위해 최초 1회만 proper 점수를 획득하게 만든 함수입니다.
- 
- 
+
+
 					/*input 텍스트 파일에서 입력 받는 것들입니다.*/
 subject arr[800];	//과목 배열입니다.
 					//subject sep[11][150]; //나중에 전공이나 계열별로 분류할수 있기에 생성은 했지만 주석처리 했습니다.
 int limit_cnt; // 학년제한 관련 변수입니다 2학년 이상 수강과목이면 limit[5] = { 0, 0, 1, 1, 1 } 로 만들기 위해 필요한 변수입니다
 int count1;
- 
+
 int compare(const void *a, const void *b)	///qsort를 위한 함수 입니다.
 {
 	const int *da = (const int *)a;
 	const int *db = (const int *)b;
- 
+
 	return (*da > *db) - (*da < *db);
 }
 int instant[20];
- 
+
 int testtime(int tt)	// 현재 서칭하고 있는 과목들이랑 시간이나 공강이 겹치지 않는지 확인하는 함수.
 {
 	int j;
@@ -113,15 +113,15 @@ int testtime(int tt)	// 현재 서칭하고 있는 과목들이랑 시간이나 
 			break; //그 요일이 공강이랑 겹치면 break
 		}
 		if (arr[tt].limit[schoolnumber] == 0) break;
- 
+
 		st = starttime(arr[tt].time[j]); //탐색과목의 시작시간
 		end = endtime(arr[tt].time[j]); //탐색과목의 종료시간
- 
+
 		for (r = 1; r <= usertime[day][0]; r++) ///기존에 수강을하려고 했던 과목이랑 겹치는 시간이 있는지 확인
 		{
 			sst = starttime(usertime[day][r]);
 			eend = endtime(usertime[day][r]);
- 
+
 			if ((st < sst && end < sst) || (st > eend && end > eend))
 			{
 				continue;
@@ -133,10 +133,10 @@ int testtime(int tt)	// 현재 서칭하고 있는 과목들이랑 시간이나 
 	if (j != arr[tt].date)return 0;
 	else return 1;
 }
- 
- 
+
+
 int main(void) {
- 
+
 	FILE * out = fopen("subjectnumber.txt", "w");
 	fstream inputFile("input1.txt");
 	string str;
@@ -158,7 +158,7 @@ int main(void) {
 	std::regex r4("핵심교양");//3
 	std::regex r5("전공선택");//4
 	std::regex r6("전공기초교양");//5
- 
+
 	int multi;
 	int sscheck;
 	char cstr[200];
@@ -186,7 +186,7 @@ int main(void) {
 						{
 							arr[count1].limit[j] = 1;
 						}
- 
+
 					}
 					if (k == 1)
 					{
@@ -196,7 +196,7 @@ int main(void) {
 						if (regex_search(str, m, r4))arr[count1].id = 3;
 						if (regex_search(str, m, r5))arr[count1].id = 4;
 						if (regex_search(str, m, r6))arr[count1].id = 5;
- 
+
 					}
 					if (k == 2)
 					{
@@ -207,7 +207,7 @@ int main(void) {
 							arr[count1].code += (cstr[j] - '0') *multi;
 							multi = multi / 10;
 						}
- 
+
 					}
 					if (k == 3)
 					{
@@ -216,7 +216,7 @@ int main(void) {
 						{
 							arr[count1].name[j - 6] = cstr[j];
 						}
- 
+
 					}
 					if (k == 4)//분반 추후에 입력
 					{
@@ -245,7 +245,7 @@ int main(void) {
 				{
 					if (sscheck != 0) arr[count1].date++;
 					if (sscheck == 0)sscheck++;
- 
+
 					if (regex_search(str, m, d_check1))arr[count1].day[arr[count1].date] = 0;
 					if (regex_search(str, m, d_check2))arr[count1].day[arr[count1].date] = 1;
 					if (regex_search(str, m, d_check3))arr[count1].day[arr[count1].date] = 2;
@@ -253,7 +253,7 @@ int main(void) {
 					if (regex_search(str, m, d_check5))arr[count1].day[arr[count1].date] = 4;
 					if (regex_search(str, m, d_check6))arr[count1].day[arr[count1].date] = 5;
 				}
- 
+
 				if (regex_search(str, m, d_time))	//시간매칭
 				{
 					multi = 10000000;
@@ -280,14 +280,14 @@ int main(void) {
 							}
 						}
 					}
- 
+
 				}
- 
+
 				if (regex_search(str, m, d_day1))	//요일매칭
 				{
 					if (sscheck == 0)sscheck++;
 					if (sscheck != 0) arr[count1].date++;
- 
+
 					if (regex_search(str, m, d_check1))arr[count1].day[arr[count1].date] = 0;
 					if (regex_search(str, m, d_check2))arr[count1].day[arr[count1].date] = 1;
 					if (regex_search(str, m, d_check3))arr[count1].day[arr[count1].date] = 2;
@@ -295,18 +295,18 @@ int main(void) {
 					if (regex_search(str, m, d_check5))arr[count1].day[arr[count1].date] = 4;
 					if (regex_search(str, m, d_check6))arr[count1].day[arr[count1].date] = 5;
 				}
- 
+
 			}
 			arr[count1].date++;
 			info[arr[count1].code] = count1;
 			count1++;
 		}
- 
- 
+
+
 	}
- 
+
 	//사용자에게 과목 배열을 보여줍니다.
- 
+
 	fprintf(out, "요일은 0 을기준으로 월요일입니다 알맞은 과목을 확인해주세요 \n\n");
 	for (int i = 1; i < count1; i++)
 	{
@@ -330,9 +330,9 @@ int main(void) {
 		fprintf(out, "\n");
 		fprintf(out, "\n");
 	}
- 
- 
- 
+
+
+
 	/*함수의 전반적인 흐름입니다*/
 	// 1 들었던 과목 체크
 	// 2 현황 표시 (졸업 이수 학점에 의한 현재 학점 여부 표시)
@@ -340,14 +340,14 @@ int main(void) {
 	// 4 꼭 듣고싶은 과목 입력 (이 과목을 무조건 포함시키고 서칭합니다 )
 	// 5 전공탐색
 	// 6 30set의 과목탐색결과를 출력 & 점수도 같이 출력
- 
+
 	int codenumber; // 과거 수강과목
 	minanswer = 0;
 	int i;
 	FILE * out1 = fopen("searching.txt", "w");
- 
+
 	printf("과거에 수강했던 과목의 과목코드을 입력해주시고, 입력이 끝났으면 0을 입력해주세요\n");
- 
+
 	while (1)
 	{
 		scanf("%d", &codenumber);	///과거에 수강했던 과목의 과목코드를 입력합니다
@@ -368,14 +368,14 @@ int main(void) {
 		else
 			break;
 	}
- 
- 
+
+
 	/*
 	user 에게 현황 보고.
 	userinfo 배열에 있는것을 참고해서 현재 수강한 과목에의한 졸업 요건을 보여줌
- 
+
 	계열	  이수해야하는학점		이수학점		완성도
- 
+
 	*/
 	printf("현재 수강현황입니다. 핵심교양과 자유교양은 합쳐서 20학점 넘으면 됩니다\n");
 	printf("계열		이수해야하는 학점		   이수 학점	     완성도 \n");
@@ -386,7 +386,7 @@ int main(void) {
 		printf("%s		%d				%d		%.2f\n", subjectname[i], subpoint[i], userinfo[i], (double)userinfo[i] * 100 / subpoint[i]);
 		
 	}
- 
+
 	//	과목 점수랑 공강시간 점수 입력
 	printf("과목 비율과 공강시간 비율을 입력해주세요 \n");
 	scanf("%d %d", &subjectpoint, &timepoint);
@@ -398,13 +398,14 @@ int main(void) {
 		printf("%s 과목의 과목 선호도를 입력해주세요 ", subjectname[i]);
 		scanf("%d", &proper[i]);
 	}
- 
-	printf("학교나오기 싫은날을 입력해주세요 \n");
+
+	printf("학교나오기 싫은날을 입력해주세요 0기준으로 월요일입니다 \n");
 	scanf("%d", &empty_s); //공강날짜 입력 상관없을시 5이상을 입력받습니다
- 
+	printf("%s요일에 학교나오기가 정말싫더라고\n",date[empty_s]);
+
 	mainpoint = 0;	//현재 수강 예정중인 학점은 아직 0 입니다
 	int day;
- 
+
 	printf("이미 수강하기로 정해놓으신 과목 갯수 입력해주세요\n");
 	scanf("%d", &number);
 	int r;
@@ -439,13 +440,13 @@ int main(void) {
 			i--;
 		}
 	}
- 
+
 	for (i = 0; i < number; i++)
 	{
 		printf("현재 저장된 과목 %d 번째 %s  \n", i + 1, arr[mysubject[i]].name);
 	}
 	printf("현재 요일별 시간 입니다 \n\n");
- 
+
 	for (i = 0; i < 7; i++)
 	{
 		printf("%s ", date[i]);
@@ -456,14 +457,14 @@ int main(void) {
 		}
 		printf("\n\n");
 	}
- 
+
 	printf("몇과목을 찾아드릴까요? \n");
 	scanf("%d", &find_s);
 	// mysubject 배열에 number수 만큼 과목이 입력되어있고,(입력시에 과목코드가 아닌 실제 arr의 번호로 입력되어 있다고 가정, past배열에도 표시되어있음)
 	// time에 또한 시간이 표시되어있음
 	int subn = number;
 	msearch(1, 0);// 메인과목찾기
- 
+
 	int sss;
 	int qqq;
 	int u;
@@ -471,7 +472,7 @@ int main(void) {
 	int s1, s2;
 	for (i = 0; i < 30; i++)
 	{
-		fprintf(out1, "%d 번째 과목추천 세트입니다\n", i);
+		fprintf(out1, "%d 번째 과목추천 세트입니다\n", i+1);
 		for (j = 0; j < find_s + subn; j++)
 		{
 			fprintf(out1, "과목 고유코드 %d  %s 점수 = %d \n", answer[i][j], arr[answer[i][j]].name, answerpoint[i]);
@@ -488,10 +489,13 @@ int main(void) {
 		for (s1 = 0; s1 < 7; s1++)
 		{
 			fprintf(out1, "%s ", date[s1]);
+			qsort(usertime[s1], usertime[s1][0]+1, sizeof(int), compare);
 			for (s2 = 0; s2 < 10; s2++)
 			{
-				if (s2 == 0)fprintf(out1, " 수업갯수!  ");
-				else fprintf(out1, "%d ", usertime[s1][s2]);
+
+				//if (s2 == 0)fprintf(out1, " 수업갯수!  ");
+				
+				if(usertime[s1][s2]!= usertime[s1][s2+1] && usertime[s1][s2]>100)fprintf(out1, "%d ", usertime[s1][s2]);
 			}
 			fprintf(out1, "\n\n");
 		}
@@ -499,17 +503,17 @@ int main(void) {
 		{
 			for (s2 = 0; s2 < 10; s2++)
 			{
- 
+
 				usertime[s1][s2] = 0;
 			}
 		}
 		fprintf(out1, "\n\n\n");
- 
+
 	}
 	system("pause");
 	return 0;
 }
- 
+
 int msearch(int k, int cnt)
 {
 	int i;
@@ -522,7 +526,7 @@ int msearch(int k, int cnt)
 	int eend;
 	int point;
 	int q;
- 
+
 	if (cnt == find_s)		// 원하는 횟수의 과목을 찾았을시에
 	{
 		//포인트 합산후 등록~ & return;
@@ -533,10 +537,10 @@ int msearch(int k, int cnt)
 			answerpoint[29] = 0;	//	점수별로 정렬이 되어있기때문에, 맨마지막을 비우고 새로 탐색한 과목을 입력합니다.
 			sbnumber[29] = 0;
 			semianswer = new int[number];	//새로 등록할 과목 set입니다.
- 
+
 			for (i = 0; i < number; i++)
 				semianswer[i] = mysubject[i];
- 
+
 			for (i = 0; i < 30; i++)
 			{
 				q = 0;
@@ -553,14 +557,14 @@ int msearch(int k, int cnt)
 					sbnumber[i] = number;
 					q = 1;
 				}
- 
+
 				if (q == 1)break;	//q가 1일때는 이미 등록을 했으므로 빠져나옵니다.
 			}
 			minanswer = answerpoint[29];
 		}
 		return 0;
 	}
- 
+
 	for (i = k; i < count1; i++)
 	{
 		if (past[arr[i].code] != 1) ///수강했던과목인지 확인.
@@ -569,7 +573,7 @@ int msearch(int k, int cnt)
 			if (r == 1) //모든조건을 만족한다면
 			{
 				//추가 시작
- 
+
 				for (j = 0; j < arr[i].date; j++) //주 몇회수업인지
 				{
 					day = arr[i].day[j];
@@ -580,16 +584,16 @@ int msearch(int k, int cnt)
 				number++;
 				mainpoint += arr[i].point;
 				past[arr[i].code] = 1;
- 
+
 				msearch(i + 1, cnt + 1); //재귀
- 
+
 										 // 빼주기
- 
+
 				number--;
 				mysubject[number] = 0;
 				mainpoint -= arr[i].point;
 				past[arr[i].code] = 0;
- 
+
 				for (j = 0; j < arr[i].date; j++) //주 몇회수업인지
 				{
 					day = arr[i].day[j];
@@ -597,11 +601,11 @@ int msearch(int k, int cnt)
 					usertime[day][0]--;
 				}
 			}
- 
+
 		}
 	}
 }
- 
+
 int calculate(void)//현재 탐색한 과목들의 조합이 몇점인지 나타 냅니다.
 {
 	int i, j;
@@ -615,13 +619,13 @@ int calculate(void)//현재 탐색한 과목들의 조합이 몇점인지 나타
 		if (checkproper[arr[mysubject[i]].id] == 0)
 		{
 			//최초엔 과목계열별 checkproper이 0입니다 왜냐하면, 최초 1회 탐색시에만 선호도에 대한 점수를 주어서 편중현상을 막기 위해서입니다
- 
+
 			scalpoint += proper[arr[mysubject[i]].id] * arr[mysubject[i]].point;	//과목선호도*학점
 			checkproper[arr[mysubject[i]].id] = 1;	//한번 점수를 얻은 선호도는 더이상 가산점이 없습니다 즉 선호도를 전공필수에10을 주었다면
 													//최초에 전공필수 한과목에 대해서만 점수가 들어갑니다.
 		}
 	}
- 
+
 	for (i = 0; i < 7; i++)
 	{
 		if (usertime[i][0] != 0)
@@ -637,15 +641,15 @@ int calculate(void)//현재 탐색한 과목들의 조합이 몇점인지 나타
 				b = ((starttime(instant[j + 1]) / 100) * 60) + starttime(instant[j + 1]) % 100;
 				tcalpoint += b - a;
 			}
- 
+
 		}
 	}
- 
+
 	tcalpoint = 100 - (tcalpoint / 15);
 	for (i = 0; i < 11; i++)
 		checkproper[i] = 0;
- 
+
 	return (tcalpoint*timepoint) + (scalpoint*subjectpoint);
- 
- 
+
+
 }
